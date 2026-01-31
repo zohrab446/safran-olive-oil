@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="font-serif text-2xl font-bold mb-4">
-              Lezzet<span className="text-primary">Dükkan</span>
+              NHR<span className="text-primary">Store</span>
             </h3>
             <p className="text-background/70 text-sm">
               Doğanın en saf lezzetlerini sofranıza taşıyoruz. Premium zeytinyağı, safran ve kaliteli ısıtma çözümleri.
@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-background/20 pt-8 text-center text-sm text-background/60">
-          <p>© 2025 LezzetDükkan. Tüm hakları saklıdır.</p>
+          <p>© 2025 NHRStore. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>
