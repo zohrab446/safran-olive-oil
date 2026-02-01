@@ -1,60 +1,19 @@
 import ProductCard from "./ProductCard";
+import { useProducts } from "@/hooks/useProducts";
+import { Loader2 } from "lucide-react";
 import oliveOilImg from "@/assets/olive-oil.jpg";
 import saffronImg from "@/assets/saffron.jpg";
 import heaterImg from "@/assets/heater.jpg";
 
-const products = [
-  {
-    id: 1,
-    image: oliveOilImg,
-    title: "Naturel Sızma Zeytinyağı",
-    description: "Ege'nin bereketli topraklarından, soğuk sıkım yöntemiyle elde edilmiş premium zeytinyağı.",
-    price: "₺450",
-    category: 'olive' as const,
-  },
-  {
-    id: 2,
-    image: oliveOilImg,
-    title: "Erken Hasat Zeytinyağı",
-    description: "Henüz olgunlaşmamış zeytinlerden elde edilen, yoğun aromalı özel üretim.",
-    price: "₺650",
-    category: 'olive' as const,
-  },
-  {
-    id: 3,
-    image: saffronImg,
-    title: "İran Safranı - 1gr",
-    description: "Dünyanın en kaliteli safranı. Yemeklerinize eşsiz renk ve lezzet katar.",
-    price: "₺180",
-    category: 'saffron' as const,
-  },
-  {
-    id: 4,
-    image: saffronImg,
-    title: "Premium Safran - 5gr",
-    description: "Restoran ve profesyonel kullanım için ideal paket. Sertifikalı orijinal ürün.",
-    price: "₺800",
-    category: 'saffron' as const,
-  },
-  {
-    id: 5,
-    image: heaterImg,
-    title: "Panel Isıtıcı 1500W",
-    description: "Enerji tasarruflu, sessiz çalışan modern panel ısıtıcı. 20m² alanı ısıtır.",
-    price: "₺2.500",
-    category: 'heater' as const,
-  },
-  {
-    id: 6,
-    image: heaterImg,
-    title: "Infrared Isıtıcı 2000W",
-    description: "Anında ısınma teknolojisi. Uzaktan kumandalı, zamanlayıcılı akıllı ısıtıcı.",
-    price: "₺3.200",
-    category: 'heater' as const,
-  },
-];
+const defaultImages: Record<string, string> = {
+  olive: oliveOilImg,
+  saffron: saffronImg,
+  heater: heaterImg,
+};
 
 const Products = () => {
+  const { products, isLoading, error } = useProducts();
+
   return (
     <section id="urunler" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-6">
@@ -67,17 +26,37 @@ const Products = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <div 
-              key={product.id} 
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <ProductCard {...product} />
-            </div>
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : error ? (
+          <div className="text-center py-12 text-muted-foreground">
+            {error}
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-12 text-muted-foreground">
+            Henüz ürün bulunmamaktadır
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <div 
+                key={product.id} 
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductCard 
+                  image={product.image_url || defaultImages[product.category] || oliveOilImg}
+                  title={product.title}
+                  description={product.description || ''}
+                  price={`₺${product.price.toLocaleString('tr-TR')}`}
+                  category={product.category}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
