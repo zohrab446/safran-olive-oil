@@ -51,4 +51,4 @@ This project is built with:
 - Tailwind CSS
 
 - 
-![image alt](https://github.com/zohrab446/safran-olive-oil/blob/5406ebe37af5c4717715e3d61f753c1fbbb0afeb/Ekran%20Resmi%202026-02-01%2003.34.10.png]
+![image alt](https://github.com/zohrab446/safran-olive-oil/blob/5406ebe37af5c4717715e3d61f753c1fbbb0afeb/Ekran%20Resmi%202026-02-01%2003.34.10.png)
