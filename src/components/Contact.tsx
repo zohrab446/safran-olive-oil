@@ -1,6 +1,9 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 const Contact = () => {
+  const whatsappNumber = "905334668011";
+  const whatsappMessage = encodeURIComponent("Merhaba, ürünleriniz hakkında bilgi almak istiyorum.");
+  
   return (
     <section id="iletisim" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -21,21 +24,25 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-serif font-semibold text-foreground mb-1">Telefon</h3>
-                <p className="text-muted-foreground">+90 (555) 123 45 67</p>
-                <p className="text-muted-foreground">+90 (212) 987 65 43</p>
+                <p className="text-muted-foreground">0312 286 00 01</p>
               </div>
             </div>
             
-            <div className="flex items-start gap-4 p-4 bg-card rounded-xl shadow-soft">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-olive flex items-center justify-center text-secondary-foreground">
-                <Mail className="w-5 h-5" />
+            <a 
+              href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-4 p-4 bg-card rounded-xl shadow-soft hover:shadow-card transition-shadow group"
+            >
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white">
+                <MessageCircle className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-foreground mb-1">E-posta</h3>
-                <p className="text-muted-foreground">info@lezzetdukkan.com</p>
-                <p className="text-muted-foreground">siparis@lezzetdukkan.com</p>
+                <h3 className="font-serif font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">WhatsApp</h3>
+                <p className="text-muted-foreground">0533 466 80 11</p>
+                <p className="text-xs text-primary mt-1">Hızlı sipariş için tıklayın →</p>
               </div>
-            </div>
+            </a>
             
             <div className="flex items-start gap-4 p-4 bg-card rounded-xl shadow-soft">
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center text-primary-foreground">
@@ -43,8 +50,8 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-serif font-semibold text-foreground mb-1">Adres</h3>
-                <p className="text-muted-foreground">Zeytin Sokak No: 42</p>
-                <p className="text-muted-foreground">Kadıköy, İstanbul</p>
+                <p className="text-muted-foreground">Ceyhun Atıf Kansu Caddesi No 26/7</p>
+                <p className="text-muted-foreground">Balgat, Çankaya / Ankara</p>
               </div>
             </div>
             
